@@ -1,8 +1,0 @@
-{
-  "/_not-found/page": "/_not-found",
-  "/dashboard/page": "/dashboard",
-  "/games/[gameId]/page": "/games/[gameId]",
-  "/login/page": "/login",
-  "/page": "/",
-  "/register/page": "/register"
-}
