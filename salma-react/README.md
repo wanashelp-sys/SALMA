@@ -1,16 +1,115 @@
-# React + Vite
+# معمل سلمى للرياضيات - نسخة React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div dir="rtl">
 
-Currently, two official plugins are available:
+## 🎯 نظرة عامة
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+هذا هو التطبيق الحديث لمعمل سلمى للرياضيات مبني بتقنية React. يوفر التطبيق 6 ألعاب تعليمية تفاعلية لتعليم الرياضيات للأطفال بطريقة ممتعة وجذابة.
 
-## React Compiler
+## 🎮 الألعاب المتوفرة
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **🔢 تعرّفي على الأرقام** - تعلم الأرقام من 0 إلى 100
+2. **📊 القيمة المنزلية** - اكتشاف الآحاد والعشرات والمئات
+3. **➕➖ الجمع والطرح** - تدريب على العمليات الحسابية البسيطة
+4. **⚖️ المقارنة بين الأعداد** - أكبر من، أصغر من، يساوي
+5. **🎈 عدّي معي** - عد الأشياء بطريقة ممتعة
+6. **⏰ قراءة الساعة** - قريباً
 
-## Expanding the ESLint configuration
+## 🚀 التشغيل
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### المتطلبات
+- Node.js (الإصدار 16 أو أحدث)
+- npm أو yarn
+
+### التثبيت
+
+```bash
+# تثبيت التبعيات
+npm install
+
+# تشغيل خادم التطوير
+npm run dev
+
+# بناء المشروع للإنتاج
+npm run build
+
+# معاينة النسخة المبنية
+npm run preview
+```
+
+## 🏗️ البنية التقنية
+
+### التقنيات المستخدمة
+- **React** 19.2.0 - مكتبة بناء الواجهات
+- **Vite** 7.2.6 - أداة البناء السريعة
+- **Bootstrap** 5 RTL - إطار عمل CSS
+- **Font Awesome** 6.4.0 - الأيقونات
+- **Google Fonts** - خط Tajawal
+
+### هيكل المشروع
+
+```
+salma-react/
+├── public/
+│   └── logo/              # شعار المشروع
+├── src/
+│   ├── components/        # المكونات الرئيسية
+│   │   ├── Header.jsx
+│   │   ├── Footer.jsx
+│   │   ├── HeroSection.jsx
+│   │   ├── GameCard.jsx
+│   │   ├── GamesGrid.jsx
+│   │   ├── GameContainer.jsx
+│   │   └── games/         # مكونات الألعاب
+│   ├── styles/            # ملفات التنسيق
+│   ├── utils/             # الأدوات المساعدة
+│   ├── App.jsx           # المكون الرئيسي
+│   ├── main.jsx          # نقطة الدخول
+│   └── index.css         # التنسيقات العامة
+└── package.json
+```
+
+## 🎨 المميزات
+
+### التصميم
+- ✨ تصميم عربي كامل (RTL)
+- 🎨 ألوان جذابة ومناسبة للأطفال
+- 📱 تصميم متجاوب يعمل على جميع الأجهزة
+- 🎭 تأثيرات حركية سلسة
+
+### الوظائف
+- 🎯 نظام نقاط تفاعلي
+- 🔊 تأثيرات صوتية
+- 🎊 تأثيرات بصرية (Confetti)
+- ♾️ أسئلة عشوائية غير محدودة
+- 🎮 واجهة سهلة الاستخدام
+
+## 🛠️ التطوير
+
+### البنية
+
+المشروع مقسم إلى مكونات منفصلة لسهولة الصيانة:
+
+- **Header** - رأس الصفحة مع الشعار
+- **HeroSection** - قسم الترحيب
+- **GamesGrid** - عرض الألعاب في شبكة
+- **GameContainer** - إدارة اللعبة النشطة
+- **Games** - المكونات الفردية للألعاب
+- **Footer** - تذييل الصفحة
+
+### إضافة لعبة جديدة
+
+1. أنشئ ملف جديد في `src/components/games/`
+2. صمم المكون باستخدام نفس البنية
+3. أضف اللعبة إلى `gameConfig` في `GameContainer.jsx`
+4. أضف بطاقة اللعبة في `GamesGrid.jsx`
+
+## 📝 الترخيص
+
+© 2025 معمل سلمى للألعاب التعليمية
+
+---
+
+صُنع بحب في معمل سلمى ❤️
+
+</div>
