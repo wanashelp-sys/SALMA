@@ -5,11 +5,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
 
 :root {
-  --color-primary: #e36e6a;
-  --color-secondary: #eb9662;
-  --color-accent: #f7d05b;
-  --color-bg: #e7deef;
-  --color-text-main: #562822;
+  /* SALMA Brand Colors */
+  --color-primary: #e36e6a;        /* وردي غامق */
+  --color-secondary: #eb9662;      /* برتقالي دافئ */
+  --color-accent: #f7d05b;         /* أصفر كنوز */
+  --color-bg: #e7deef;             /* بنفسجي فاتح */
+  --color-text-main: #562822;      /* بني غامق */
+  --color-skin-light: #f4ccab;     /* بيج فاتح */
+  
+  /* Light variants */
+  --color-pink-light: #fde8e7;
+  --color-orange-light: #fef3ed;
+  --color-yellow-light: #fef9eb;
 }
 
 * {
@@ -24,8 +31,6 @@ body {
   color: var(--color-text-main);
   min-height: 100vh;
 }
-
-/* Animations */
 @keyframes float {
   0%, 100% {
     transform: translateY(0) rotate(0deg);

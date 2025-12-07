@@ -68,7 +68,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-secondary/20 via-white to-olive/10">
+    <div className="min-h-screen flex items-center justify-center p-6">
       <div className="w-full max-w-md bg-white/95 rounded-3xl shadow-2xl p-8">
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center gap-2 mb-4">
@@ -82,8 +82,8 @@ export default function LoginPage() {
               />
             </div>
           </Link>
-          <h1 className="text-2xl font-bold text-accent mb-2">تسجيل الدخول</h1>
-          <p className="text-sm text-accent/70">ادخلي إلى معمل سلمى التعليمي</p>
+          <h1 className="text-2xl font-bold text-salma-text mb-2">تسجيل الدخول</h1>
+          <p className="text-sm text-salma-text/70">ادخلي إلى معمل سلمى التعليمي</p>
         </div>
 
         {error && (
@@ -95,28 +95,28 @@ export default function LoginPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-semibold text-accent mb-1">
+            <label className="block text-sm font-semibold text-salma-text mb-1">
               اسم المستخدم
             </label>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 border-2 border-clay/20 rounded-lg focus:border-primary focus:outline-none"
+              className="w-full px-4 py-3 border-2 border-salma-primary/20 rounded-lg focus:border-salma-primary focus:outline-none"
               placeholder="اسم المستخدم"
               required
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-accent mb-1">
+            <label className="block text-sm font-semibold text-salma-text mb-1">
               كلمة المرور
             </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 border-2 border-clay/20 rounded-lg focus:border-primary focus:outline-none"
+              className="w-full px-4 py-3 border-2 border-salma-primary/20 rounded-lg focus:border-salma-primary focus:outline-none"
               placeholder="كلمة المرور"
               required
             />
@@ -125,9 +125,9 @@ export default function LoginPage() {
           <div className="flex items-center justify-between text-sm">
             <label className="flex items-center gap-2">
               <input type="checkbox" />
-              <span className="text-accent">تذكرني</span>
+              <span className="text-salma-text">تذكرني</span>
             </label>
-            <a href="#" className="text-primary hover:underline">
+            <a href="#" className="text-salma-primary hover:underline">
               نسيت كلمة المرور؟
             </a>
           </div>
@@ -135,14 +135,14 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-4 rounded-lg hover:shadow-lg transition-all disabled:opacity-50"
+            className="w-full bg-gradient-to-r from-salma-primary to-salma-secondary text-white font-bold py-4 rounded-lg hover:shadow-lg transition-all disabled:opacity-50"
           >
             {loading ? 'جاري تسجيل الدخول...' : 'تسجيل الدخول'}
           </button>
 
-          <div className="text-center text-sm text-accent">
+          <div className="text-center text-sm text-salma-text">
             ليس لديكِ حساب؟{' '}
-            <Link href="/register" className="text-primary hover:underline font-semibold">
+            <Link href="/register" className="text-salma-primary hover:underline font-semibold">
               إنشاء حساب جديد
             </Link>
           </div>
