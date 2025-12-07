@@ -1,0 +1,291 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+
+:root {
+  --color-primary: #e36e6a;
+  --color-secondary: #eb9662;
+  --color-accent: #f7d05b;
+  --color-bg: #e7deef;
+  --color-text-main: #562822;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Tajawal', sans-serif;
+  background: radial-gradient(circle at top left, #fde8e7 0%, #f4ccab 40%, #e7deef 100%);
+  color: var(--color-text-main);
+  min-height: 100vh;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(-2deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(227, 110, 106, 0.3), 0 0 40px rgba(235, 150, 98, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(227, 110, 106, 0.5), 0 0 60px rgba(235, 150, 98, 0.4);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite, pulse-glow 3s ease-in-out infinite;
+}
+
+/* Bubble Animations */
+@keyframes float-bubble {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+@keyframes gentle-spin {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+}
+
+@keyframes bubble-float {
+  0% {
+    transform: translateY(100%) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+.animate-float-bubble {
+  animation: float-bubble 3s ease-in-out infinite;
+}
+
+.animate-gentle-spin {
+  animation: gentle-spin 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+/* Bubbles Container */
+.bubble-container {
+  position: relative;
+}
+
+.bubble {
+  position: absolute;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+  border: 2px solid rgba(235, 150, 98, 0.3);
+  border-radius: 50%;
+  opacity: 0;
+  animation: bubble-float linear infinite;
+  box-shadow: 
+    inset 0 0 15px rgba(255, 255, 255, 0.8),
+    0 0 15px rgba(235, 150, 98, 0.2);
+}
+
+.bubble-1 {
+  width: 60px;
+  height: 60px;
+  left: 10%;
+  animation-duration: 8s;
+  animation-delay: 0s;
+}
+
+.bubble-2 {
+  width: 40px;
+  height: 40px;
+  left: 70%;
+  animation-duration: 10s;
+  animation-delay: 2s;
+}
+
+.bubble-3 {
+  width: 80px;
+  height: 80px;
+  left: 30%;
+  animation-duration: 12s;
+  animation-delay: 1s;
+}
+
+.bubble-4 {
+  width: 50px;
+  height: 50px;
+  left: 85%;
+  animation-duration: 9s;
+  animation-delay: 3s;
+}
+
+.bubble-5 {
+  width: 35px;
+  height: 35px;
+  left: 50%;
+  animation-duration: 11s;
+  animation-delay: 4s;
+}
+
+.bubble-6 {
+  width: 55px;
+  height: 55px;
+  left: 20%;
+  animation-duration: 10s;
+  animation-delay: 5s;
+}
+
+.bubble-7 {
+  width: 45px;
+  height: 45px;
+  left: 65%;
+  animation-duration: 9s;
+  animation-delay: 6s;
+}
+
+.logo-bubble {
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Front Bubbles - Floating in front of the image */
+.front-bubble {
+  position: absolute;
+  z-index: 20;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(247, 208, 91, 0.4));
+  border: 2px solid rgba(227, 110, 106, 0.3);
+  border-radius: 50%;
+  opacity: 0;
+  animation: bubble-float linear infinite;
+  box-shadow: 
+    inset -10px -10px 20px rgba(255, 255, 255, 0.8),
+    inset 10px 10px 20px rgba(247, 208, 91, 0.3),
+    0 0 20px rgba(227, 110, 106, 0.3);
+  pointer-events: none;
+}
+
+.front-bubble-1 {
+  width: 50px;
+  height: 50px;
+  left: 15%;
+  animation-duration: 7s;
+  animation-delay: 0s;
+}
+
+.front-bubble-2 {
+  width: 30px;
+  height: 30px;
+  left: 75%;
+  animation-duration: 9s;
+  animation-delay: 1.5s;
+}
+
+.front-bubble-3 {
+  width: 65px;
+  height: 65px;
+  left: 40%;
+  animation-duration: 10s;
+  animation-delay: 0.5s;
+}
+
+.front-bubble-4 {
+  width: 45px;
+  height: 45px;
+  left: 90%;
+  animation-duration: 8s;
+  animation-delay: 2s;
+}
+
+.front-bubble-5 {
+  width: 35px;
+  height: 35px;
+  left: 55%;
+  animation-duration: 11s;
+  animation-delay: 3s;
+}
+
+.front-bubble-6 {
+  width: 55px;
+  height: 55px;
+  left: 25%;
+  animation-duration: 9.5s;
+  animation-delay: 4s;
+}
+
+.front-bubble-7 {
+  width: 40px;
+  height: 40px;
+  left: 60%;
+  animation-duration: 8.5s;
+  animation-delay: 1s;
+}
+
+.front-bubble-8 {
+  width: 48px;
+  height: 48px;
+  left: 5%;
+  animation-duration: 10.5s;
+  animation-delay: 2.5s;
+}
+
+.front-bubble-9 {
+  width: 38px;
+  height: 38px;
+  left: 80%;
+  animation-duration: 9s;
+  animation-delay: 3.5s;
+}
+
+.front-bubble-10 {
+  width: 42px;
+  height: 42px;
+  left: 35%;
+  animation-duration: 8s;
+  animation-delay: 4.5s;
+}

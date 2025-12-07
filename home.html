@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>معمل سلمى للّعب والحساب | منصة تعليمية تفاعلية للطالبات</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo/شعار (1).png">
+
+  <!-- خط Tajawal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 RTL -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      /* ألوان الشعار - Salma Brand Colors */
+      --color-primary: #e36e6a;        /* وردي غامق */
+      --color-secondary: #eb9662;      /* برتقالي دافئ */
+      --color-accent: #f7d05b;         /* أصفر كنوز */
+      --color-bg: #e7deef;             /* بنفسجي فاتح */
+      --color-text-main: #562822;      /* بني غامق */
+      --color-skin-light: #f4ccab;     /* بيج فاتح */
+
+      /* ألوان إضافية */
+      --color-white: #ffffff;
+      --color-pink-light: #fde8e7;
+      --color-orange-light: #fef3ed;
+      --color-yellow-light: #fef9eb;
+
+      /* الخلفية المتدرجة */
+      --bg-grad-1: #fde8e7;
+      --bg-grad-2: #f4ccab;
+      --bg-grad-3: #e7deef;
+
+      --card-main-bg: rgba(255, 255, 255, 0.95);
+      --card-soft-bg: rgba(255, 255, 255, 0.98);
+      --card-border: rgba(227, 110, 106, 0.3);
+      --card-border-soft: rgba(235, 150, 98, 0.25);
+
+      --text-muted: #8b7355;
+      --text-light: #a89080;
+
+      /* الظلال */
+      --shadow-soft: 0 8px 20px rgba(86, 40, 34, 0.1);
+      --shadow-hover: 0 12px 30px rgba(86, 40, 34, 0.15);
+    }
+
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Tajawal", system-ui, -apple-system, sans-serif;
+      color: var(--color-text-main);
+      background: radial-gradient(circle at top left, var(--bg-grad-1) 0%, var(--bg-grad-2) 40%, var(--bg-grad-3) 100%);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* عناصر خلفية زخرفية */
+    body::before {
+      content: "＋ － × ÷";
+      position: fixed;
+      right: 5%;
+      top: 10%;
+      font-size: 110px;
+      line-height: 1.2;
+      opacity: 0.04;
+      color: var(--color-primary);
+      pointer-events: none;
+      white-space: pre;
+      z-index: 0;
+    }
+
+    /* الحاوية الرئيسية */
+    .landing-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .main-card {
+      width: 100%;
+      max-width: 1200px;
+      border-radius: 28px;
+      padding: 28px 24px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(253,232,231,0.92));
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: var(--shadow-soft), 0 0 0 1px var(--card-border);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+
+    @media (min-width: 992px) {
+      .main-card { 
+        padding: 32px 36px; 
+      }
+    }
+
+    /* رأس الصفحة */
+    .page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-wrapper {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--color-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 0 3px rgba(227, 110, 106, 0.2),
+        0 10px 25px rgba(86, 40, 34, 0.15);
+      overflow: hidden;
+      padding: 4px;
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .platform-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-secondary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .main-title {
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--color-text-main);
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--color-white);
+      border: 1px solid var(--card-border);
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+
+    .nav-link:hover {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+      background: var(--color-pink-light);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(227, 110, 106, 0.2);
+    }
+
+    @media (max-width: 576px) {
+      .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-buttons {
+        width: 100%;
+        justify-content: flex-end;
+      }
+    }
+
+    /* قسم البطل الرئيسي */
+    .hero-section {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .tag-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--color-yellow-light);
+      border: 1px solid var(--color-accent);
+      color: var(--color-text-main);
+      font-size: 13px;
+      font-weight: 600;
+      width: fit-content;
+    }
+
+    .hero-heading {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--color-text-main);
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      padding: 12px 28px;
+      border: none;
+      font-size: 15px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      box-shadow: 0 10px 26px rgba(227, 110, 106, 0.35);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(227, 110, 106, 0.45);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 11px 22px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 1px solid var(--color-secondary);
+      background: var(--color-white);
+      color: var(--color-text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-orange-light);
+      border-color: var(--color-primary);
+      box-shadow: 0 8px 18px rgba(235, 150, 98, 0.3);
+      transform: translateY(-1px);
+      color: var(--color-text-main);
+    }
+
+    .info-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* الجانب البصري المحسّن */
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .visual-card-wrapper {
+      width: 100%;
+      position: relative;
+    }
+
+    /* البطاقة الرئيسية المحسّنة */
+    .visual-main-card {
+      width: 100%;
+      min-height: 280px;
+      border-radius: 28px;
+      background: 
+        linear-gradient(135deg, 
+          rgba(253, 232, 231, 0.95) 0%, 
+          rgba(235, 150, 98, 0.92) 50%, 
+          rgba(227, 110, 106, 0.95) 100%
+        );
+      box-shadow:
+        0 25px 50px rgba(227, 110, 106, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* محتوى مركزي */
+    .visual-center-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .visual-emoji-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      animation: floatUpDown 3s ease-in-out infinite;
+    }
+
+    .emoji-item {
+      font-size: 48px;
+      filter: drop-shadow(0 4px 8px rgba(86, 40, 34, 0.2));
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .emoji-item:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .emoji-item:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    .emoji-plus {
+      font-size: 32px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 2px 4px rgba(86, 40, 34, 0.3);
+    }
+
+    .visual-main-text {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      text-shadow: 
+        0 2px 8px rgba(86, 40, 34, 0.3),
+        0 0 20px rgba(255, 255, 255, 0.3);
+      margin: 0 0 8px 0;
+      line-height: 1.2;
+    }
+
+    .visual-sub-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.95);
+      text-shadow: 0 1px 4px rgba(86, 40, 34, 0.2);
+      margin: 0;
+    }
+
+    /* أيقونات عائمة متحركة */
+    .floating-icon {
+      position: absolute;
+      font-size: 32px;
+      opacity: 0.6;
+      animation: floatAround 6s ease-in-out infinite;
+      filter: drop-shadow(0 4px 8px rgba(86, 40, 34, 0.15));
+    }
+
+    .icon-1 {
+      top: 12%;
+      right: 15%;
+      animation-delay: 0s;
+    }
+
+    .icon-2 {
+      bottom: 18%;
+      left: 12%;
+      animation-delay: 1s;
+    }
+
+    .icon-3 {
+      top: 25%;
+      left: 18%;
+      font-size: 28px;
+      animation-delay: 2s;
+    }
+
+    .icon-4 {
+      top: 60%;
+      right: 20%;
+      font-size: 26px;
+      animation-delay: 3s;
+    }
+
+    .icon-5 {
+      bottom: 35%;
+      right: 12%;
+      font-size: 30px;
+      animation-delay: 1.5s;
+    }
+
+    /* دوائر زخرفية */
+    .decorative-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+      animation: expandShrink 4s ease-in-out infinite;
+    }
+
+    .circle-1 {
+      width: 120px;
+      height: 120px;
+      top: -40px;
+      right: -40px;
+      animation-delay: 0s;
+    }
+
+    .circle-2 {
+      width: 80px;
+      height: 80px;
+      bottom: -20px;
+      left: 20%;
+      animation-delay: 1.5s;
+    }
+
+    .circle-3 {
+      width: 100px;
+      height: 100px;
+      top: 40%;
+      left: -30px;
+      animation-delay: 3s;
+    }
+
+    /* بطاقة المعلومات المحسّنة */
+    .info-badge-enhanced {
+      width: 95%;
+      margin: 0 auto;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: var(--color-white);
+      border: 1px solid var(--card-border-soft);
+      box-shadow: 
+        0 12px 28px rgba(86, 40, 34, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.8);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 14px;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .info-badge-enhanced:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        0 16px 36px rgba(86, 40, 34, 0.15),
+        0 0 0 1px rgba(227, 110, 106, 0.3);
+    }
+
+    .badge-icon {
+      font-size: 32px;
+      animation: spin 3s linear infinite;
+    }
+
+    .badge-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .badge-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--color-primary);
+      line-height: 1.2;
+    }
+
+    .badge-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.3;
+    }
+
+    .badge-stats {
+      display: flex;
+      gap: 12px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 6px 10px;
+      background: linear-gradient(135deg, var(--color-pink-light), var(--color-orange-light));
+      border-radius: 12px;
+      min-width: 50px;
+    }
+
+    .stat-icon {
+      font-size: 18px;
+    }
+
+    .stat-number {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    /* الحركات والتأثيرات */
+    @keyframes floatUpDown {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    @keyframes floatAround {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% {
+        transform: translate(10px, -10px) rotate(5deg);
+      }
+      50% {
+        transform: translate(-5px, 10px) rotate(-5deg);
+      }
+      75% {
+        transform: translate(-10px, -5px) rotate(3deg);
+      }
+    }
+
+    @keyframes expandShrink {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.3;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.15;
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* شبكة المميزات */
+    .features-section {
+      margin-top: 12px;
+    }
+
+    .feature-item {
+      height: 100%;
+      border-radius: 22px;
+      padding: 18px 16px;
+      background: var(--card-main-bg);
+      border: 1px solid var(--card-border-soft);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--color-primary);
+    }
+
+    .feature-label {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .label-purple {
+      background: var(--color-pink-light);
+      border: 1px solid var(--color-primary);
+      color: var(--color-text-main);
+    }
+
+    .label-blue {
+      background: var(--color-orange-light);
+      border: 1px solid var(--color-secondary);
+      color: var(--color-text-main);
+    }
+
+    .label-green {
+      background: var(--color-yellow-light);
+      border: 1px solid var(--color-accent);
+      color: var(--color-text-main);
+    }
+
+    .label-orange {
+      background: #fff7ed;
+      border: 1px solid var(--color-secondary);
+      color: var(--color-text-main);
+    }
+
+    .feature-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 10px;
+      background: var(--color-pink-light);
+      border: 1px solid var(--color-primary);
+    }
+
+    .feature-heading {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--color-text-main);
+    }
+
+    .feature-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .feature-points {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding-right: 20px;
+      list-style: disc;
+    }
+
+    .feature-points li {
+      margin-bottom: 5px;
+      line-height: 1.4;
+    }
+
+    /* التذييل */
+    .page-footer {
+      margin-top: 20px;
+      padding: 16px;
+      border-top: 1px solid var(--card-border-soft);
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* تحسينات للشاشات الصغيرة */
+    @media (max-width: 576px) {
+      .logo-wrapper {
+        width: 54px;
+        height: 54px;
+      }
+
+      .hero-heading {
+        font-size: 26px;
+      }
+      
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .visual-main-card {
+        min-height: 240px;
+      }
+
+      .visual-emoji-group {
+        gap: 8px;
+      }
+
+      .emoji-item {
+        font-size: 38px;
+      }
+
+      .emoji-plus {
+        font-size: 26px;
+      }
+
+      .visual-main-text {
+        font-size: 22px;
+      }
+
+      .visual-sub-text {
+        font-size: 14px;
+      }
+
+      .floating-icon {
+        font-size: 24px;
+      }
+
+      .info-badge-enhanced {
+        grid-template-columns: auto 1fr;
+        gap: 12px;
+      }
+
+      .badge-stats {
+        grid-column: 1 / -1;
+        justify-content: center;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="landing-container">
+  <main class="main-card">
+    
+    <!-- رأس الصفحة -->
+    <header class="page-header">
+      <div class="brand-section">
+        <div class="logo-wrapper">
+          <img src="logo/شعار (1).png" alt="معمل سلمى" class="logo-img">
+        </div>
+        <div class="brand-info">
+          <div class="platform-label">لعبتي مع الأرقام – منصة الطالبات</div>
+          <h1 class="main-title">معمل سلمى للّعب والحساب</h1>
+          <p class="subtitle">مختبر ألعاب تعليمية يحول الرياضيات إلى تجربة ممتعة ومشوقة</p>
+        </div>
+      </div>
+
+      <nav class="nav-buttons">
+        <a href="login.html" class="nav-link">تسجيل الدخول</a>
+        <a href="register.html" class="nav-link">إنشاء حساب</a>
+      </nav>
+    </header>
+
+    <!-- قسم البطل الرئيسي -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="tag-badge">
+          <span>🧪 + 🎮</span>
+          <span>اللعب، التجربة، ثم فهم الرياضيات بعمق</span>
+        </div>
+
+        <h2 class="hero-heading">
+          ابني مملكتك الرياضية في
+          <span class="gradient-text">معمل سلمى</span>
+          حيث كل حل يبني عالماً جديداً
+        </h2>
+
+        <p class="hero-description">
+          منصة تحوّل الرياضيات إلى مغامرة بناء حقيقية! كل مسألة تحلينها تصبح لبنة في عالمك الافتراضي، 
+          شاركي في تحديات حية مع زميلاتك، وصمّمي ألعابك الخاصة، واحصلي على جوائز تكرّم ذكاءك ومثابرتك.
+        </p>
+
+        <div class="cta-buttons">
+          <a href="index.html" class="btn-primary">
+            <span>🏰 ابدئي بناء مملكتك الآن</span>
+            <span>➡️</span>
+          </a>
+
+          <a href="login.html" class="btn-secondary">
+            <span>لديك حساب؟</span>
+            <span>دخول</span>
+          </a>
+        </div>
+
+        <p class="info-note">
+          💡 لا حاجة لتثبيت أي تطبيق – المنصة تعمل مباشرة من المتصفح على جميع الأجهزة
+        </p>
+      </div>
+
+      <!-- الجزء البصري المحسّن -->
+      <div class="hero-visual">
+        <div class="visual-card-wrapper">
+          <!-- البطاقة الرئيسية -->
+          <div class="visual-main-card">
+            <!-- الأيقونات المتحركة -->
+            <div class="floating-icon icon-1">🧪</div>
+            <div class="floating-icon icon-2">🎮</div>
+            <div class="floating-icon icon-3">📊</div>
+            <div class="floating-icon icon-4">⭐</div>
+            <div class="floating-icon icon-5">🎯</div>
+            
+            <!-- النص المركزي -->
+            <div class="visual-center-content">
+              <div class="visual-emoji-group">
+                <span class="emoji-item">🧪</span>
+                <span class="emoji-plus">+</span>
+                <span class="emoji-item">🎮</span>
+              </div>
+              <h3 class="visual-main-text">تعلّم الرياضيات</h3>
+              <p class="visual-sub-text">من خلال اللعب والتجربة</p>
+            </div>
+
+            <!-- دوائر زخرفية متحركة -->
+            <div class="decorative-circle circle-1"></div>
+            <div class="decorative-circle circle-2"></div>
+            <div class="decorative-circle circle-3"></div>
+          </div>
+
+          <!-- بطاقة المعلومات السفلية -->
+          <div class="info-badge-enhanced">
+            <div class="badge-icon">✨</div>
+            <div class="badge-content">
+              <div class="badge-title">أكثر من مجرد تمارين</div>
+              <div class="badge-text">تحديات • شخصيات • إنجازات</div>
+            </div>
+            <div class="badge-stats">
+              <div class="stat-item">
+                <span class="stat-icon">🎯</span>
+                <span class="stat-number">+50</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-icon">🏆</span>
+                <span class="stat-number">+20</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- شبكة المميزات -->
+    <section class="features-section">
+      <div class="row g-3">
+        
+        <!-- المميزة الأولى: عالم الرياضيات الافتراضي -->
+        <div class="col-12 col-md-6">
+          <article class="feature-item">
+            <span class="feature-label label-purple">تعلم كأنك تبني مملكة</span>
+            <div class="feature-icon-box">🏰</div>
+            <h3 class="feature-heading">عالم الرياضيات الافتراضي</h3>
+            <p class="feature-text">
+              حوّلي حل المسائل الرياضية إلى عملة بناء لعالمك الافتراضي الخاص. كل معلومة جديدة تُترجم إلى تقدم ملموس!
+            </p>
+            <ul class="feature-points">
+              <li>ابني قصرك ومدينتك الخاصة بكل مسألة تحلينها</li>
+              <li>اكتشفي مناطق جديدة كلما تقدمتِ في المستويات</li>
+              <li>اجمعي الموارد والكنوز من خلال إتقان المهارات</li>
+              <li>شاهدي عالمك ينمو ويزدهر مع تقدمك التعليمي</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- المميزة الثانية: تحديات لايف جماعية -->
+        <div class="col-12 col-md-6">
+          <article class="feature-item">
+            <span class="feature-label label-blue">التعليم كمهرجان افتراضي</span>
+            <div class="feature-icon-box">🎪</div>
+            <h3 class="feature-heading">تحديات "لايف" جماعية</h3>
+            <p class="feature-text">
+              حوّلي وقت الدراسة إلى فعالية حية محدودة الوقت! اجتمعي مع زميلاتك للتعاون أو التنافس في حل ألغاز رياضية مثيرة.
+            </p>
+            <ul class="feature-points">
+              <li>فعاليات حية يومية وأسبوعية بجوائز مميزة</li>
+              <li>تعاوني مع فريقك أو تنافسي مع الفصول الأخرى</li>
+              <li>شاشة المتصدرات الحية تعرض تقدمك لحظة بلحظة</li>
+              <li>ألغاز جماعية تحتاج عقولاً متعاونة لحلها</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- المميزة الثالثة: مكتبة صانع التحديات -->
+        <div class="col-12 col-md-6">
+          <article class="feature-item">
+            <span class="feature-label label-green">الطالب المُعلِّم</span>
+            <div class="feature-icon-box">🎨</div>
+            <h3 class="feature-heading">مكتبة "صانع التحديات"</h3>
+            <p class="feature-text">
+              حوّلي ما فهمتِه إلى لعبة أو تحدي تشاركينه مع زميلاتك! ارتقي من متلقية إلى مبدعة ومُعلِّمة.
+            </p>
+            <ul class="feature-points">
+              <li>صمّمي ألعابك الرياضية الخاصة بأدوات سهلة ومرحة</li>
+              <li>شاركي تحدياتك مع صفك أو مع جميع الطالبات</li>
+              <li>عمّقي فهمك بتحويل المفاهيم إلى أمثلة من واقعك</li>
+              <li>احصلي على نجوم وتقييمات من زميلاتك على إبداعاتك</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- المميزة الرابعة: جوائز الذكاء والمثابرة -->
+        <div class="col-12 col-md-6">
+          <article class="feature-item">
+            <span class="feature-label label-orange">تكريم العقلية لا الإجابة فقط</span>
+            <div class="feature-icon-box">🏆</div>
+            <h3 class="feature-heading">جوائز الذكاء والمثابرة</h3>
+            <p class="feature-text">
+              نظام مكافآت يُشرِّف طرق تفكيرك وإبداعك، وليس فقط النتيجة النهائية. قيمة الرياضيات في الطريق الذي يسلكه عقلك!
+            </p>
+            <ul class="feature-points">
+              <li>جوائز المثابرة: للطالبة التي لم تستسلم رغم الصعوبة</li>
+              <li>نجمة الإبداع: لمن وجدت طريقة حل مبتكرة ومختلفة</li>
+              <li>وسام المساعدة: لمن ساعدت زميلاتها على الفهم</li>
+              <li>شارة التطور: لمن تحسّنت بغض النظر عن نقطة البداية</li>
+            </ul>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer class="page-footer">
+      © 2025 معمل سلمى للّعب والحساب | تطوير معلمة سلمى بكل حب 💜
+    </footer>
+
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
