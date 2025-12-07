@@ -8,18 +8,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#FD0000',        // Pure Red
-        secondary: '#F4C181',      // Sandy Clay
-        accent: '#572822',         // Espresso
-        coffee: '#220005',         // Coffee Bean
-        clay: '#763E2C',           // Clay Soil
-        olive: '#A7B683',          // Muted Olive
-        skyBlue: '#7DBECF',        // Sky Blue (Light)
-        golden: '#926A2B',         // Golden Earth
+        // SALMA Brand Colors from Logo
+        'salma-primary': '#e36e6a',      // وردي غامق - Primary Pink
+        'salma-secondary': '#eb9662',    // برتقالي دافئ - Warm Orange
+        'salma-accent': '#f7d05b',       // أصفر كنوز - Golden Yellow
+        'salma-bg': '#e7deef',           // بنفسجي فاتح - Light Purple
+        'salma-text': '#562822',         // بني غامق - Dark Brown
+        'salma-skin': '#f4ccab',         // بيج فاتح - Light Beige
         // Light variants for backgrounds
-        redLight: '#ffe6e6',
-        clayLight: '#fef3ed',
-        espressoLight: '#f5efed',
+        'salma-pink-light': '#fde8e7',
+        'salma-orange-light': '#fef3ed',
+        'salma-yellow-light': '#fef9eb',
       },
       fontFamily: {
         tajawal: ['Tajawal', 'sans-serif'],

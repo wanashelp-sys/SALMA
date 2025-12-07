@@ -1,207 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#e36e6a">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="معمل سلمى">
-    <title>ساعة مع الأرقام | معمل سلمى للرياضيات</title>
-    
-    <!-- Bootstrap 5 RTL -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-    
-    <!-- Google Font - Tajawal -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="logo/شعار (1).png">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Header -->
-    <header class="py-4 mb-4">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-auto">
-                    <div class="logo-circle">
-                        <img src="logo/شعار (1).png" alt="معمل سلمى" class="logo-img">
-                    </div>
-                </div>
-                <div class="col">
-                    <h1 class="mb-0 display-6 fw-bold">معمل سلمى للرياضيات</h1>
-                    <p class="mb-0 text-muted">ساعة مع الأرقام ⏰</p>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Welcome Section -->
-        <section class="welcome-card card-playful mb-5 p-5 text-center">
-            <div class="welcome-emoji mb-3">🎯</div>
-            <h2 class="display-5 fw-bold mb-3">مرحباً بك في معمل الأرقام!</h2>
-            <p class="lead mb-4">اختاري لعبتك المفضلة وابدئي الاستكشاف والمرح مع الرياضيات</p>
-            <button class="btn btn-primary-salma btn-lg px-5 py-3" onclick="scrollToGames()">
-                <i class="fas fa-play-circle ms-2"></i>
-                ابدئي الآن
-            </button>
-        </section>
-
-        <!-- Games Grid -->
-        <section class="games-section mb-5">
-            <h3 class="text-center mb-4 fw-bold fs-2">🎮 الألعاب التفاعلية</h3>
-            
-            <div class="row g-4" id="games-grid">
-                <!-- Game 1: Number Recognition -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="game-card card-playful h-100" onclick="startGame('numbers')">
-                        <div class="card-body text-center p-4">
-                            <div class="game-icon mb-3">🔢</div>
-                            <h4 class="fw-bold mb-3">تعرّفي على الأرقام</h4>
-                            <p class="text-muted mb-3">تعلمي الأرقام من 0 إلى 100 بطريقة ممتعة</p>
-                            <span class="badge badge-accent">سهل</span>
-                        </div>
-                        <div class="card-footer bg-transparent border-0 text-center pb-4">
-                            <button class="btn btn-outline-primary-salma">
-                                ابدئي اللعب
-                                <i class="fas fa-arrow-left me-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Game 2: Place Value -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="game-card card-playful h-100" onclick="startGame('place-value')">
-                        <div class="card-body text-center p-4">
-                            <div class="game-icon mb-3">📊</div>
-                            <h4 class="fw-bold mb-3">القيمة المنزلية</h4>
-                            <p class="text-muted mb-3">اكتشفي الآحاد والعشرات والمئات</p>
-                            <span class="badge badge-secondary">متوسط</span>
-                        </div>
-                        <div class="card-footer bg-transparent border-0 text-center pb-4">
-                            <button class="btn btn-outline-primary-salma">
-                                ابدئي اللعب
-                                <i class="fas fa-arrow-left me-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Game 3: Addition & Subtraction -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="game-card card-playful h-100" onclick="startGame('operations')">
-                        <div class="card-body text-center p-4">
-                            <div class="game-icon mb-3">➕➖</div>
-                            <h4 class="fw-bold mb-3">الجمع والطرح</h4>
-                            <p class="text-muted mb-3">تدربي على العمليات الحسابية البسيطة</p>
-                            <span class="badge badge-accent">سهل</span>
-                        </div>
-                        <div class="card-footer bg-transparent border-0 text-center pb-4">
-                            <button class="btn btn-outline-primary-salma">
-                                ابدئي اللعب
-                                <i class="fas fa-arrow-left me-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Game 4: Clock Reading -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="game-card card-playful h-100" onclick="startGame('clock')">
-                        <div class="card-body text-center p-4">
-                            <div class="game-icon mb-3">⏰</div>
-                            <h4 class="fw-bold mb-3">قراءة الساعة</h4>
-                            <p class="text-muted mb-3">تعلمي قراءة الوقت بطريقة مرحة</p>
-                            <span class="badge badge-secondary">متوسط</span>
-                        </div>
-                        <div class="card-footer bg-transparent border-0 text-center pb-4">
-                            <button class="btn btn-outline-primary-salma">
-                                ابدئي اللعب
-                                <i class="fas fa-arrow-left me-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Game 5: Number Comparison -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="game-card card-playful h-100" onclick="startGame('comparison')">
-                        <div class="card-body text-center p-4">
-                            <div class="game-icon mb-3">⚖️</div>
-                            <h4 class="fw-bold mb-3">المقارنة بين الأعداد</h4>
-                            <p class="text-muted mb-3">أكبر من، أصغر من، يساوي</p>
-                            <span class="badge badge-accent">سهل</span>
-                        </div>
-                        <div class="card-footer bg-transparent border-0 text-center pb-4">
-                            <button class="btn btn-outline-primary-salma">
-                                ابدئي اللعب
-                                <i class="fas fa-arrow-left me-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Game 6: Counting -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="game-card card-playful h-100" onclick="startGame('counting')">
-                        <div class="card-body text-center p-4">
-                            <div class="game-icon mb-3">🎈</div>
-                            <h4 class="fw-bold mb-3">عدّي معي</h4>
-                            <p class="text-muted mb-3">احسبي الأشياء بطريقة ممتعة</p>
-                            <span class="badge badge-accent">سهل</span>
-                        </div>
-                        <div class="card-footer bg-transparent border-0 text-center pb-4">
-                            <button class="btn btn-outline-primary-salma">
-                                ابدئي اللعب
-                                <i class="fas fa-arrow-left me-2"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Game Container (Hidden Initially) -->
-        <section id="game-container" class="game-container card-playful p-5 mb-5" style="display: none;">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h3 id="game-title" class="fw-bold mb-0"></h3>
-                <button class="btn btn-outline-secondary" onclick="closeGame()">
-                    <i class="fas fa-times ms-2"></i>
-                    إغلاق
-                </button>
-            </div>
-            
-            <!-- Game content will be loaded here dynamically -->
-            <div id="game-content"></div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-4 mt-5 text-center">
-        <div class="container">
-            <p class="text-muted mb-2">
-                <i class="fas fa-heart" style="color: var(--color-primary);"></i>
-                صُنع بحب في معمل سلمى
-            </p>
-            <p class="small text-muted">© 2025 معمل سلمى للألعاب التعليمية</p>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JavaScript -->
-    <script src="script.js"></script>
-</body>
-</html>

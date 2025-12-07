@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>لوحة التحكم | معمل سلمى التعليمي</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo/شعار (1).png">
+
+  <!-- خط Tajawal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 RTL -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-primary: #e36e6a;
+      --color-secondary: #eb9662;
+      --color-accent: #f7d05b;
+      --color-bg: #e7deef;
+      --color-text-main: #562822;
+      --color-white: #ffffff;
+      --color-pink-light: #fde8e7;
+      --color-orange-light: #fef3ed;
+      --color-yellow-light: #fef9eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Tajawal", system-ui, sans-serif;
+      background: radial-gradient(circle at top left, #fde8e7 0%, #f4ccab 40%, #e7deef 100%);
+      min-height: 100vh;
+      color: var(--color-text-main);
+    }
+
+    /* Header */
+    .dashboard-header {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      color: var(--color-white);
+      padding: 20px 0;
+      box-shadow: 0 4px 20px rgba(86, 40, 34, 0.15);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-circle {
+      width: 50px;
+      height: 50px;
+      background: var(--color-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-text h1 {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .user-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .user-info {
+      text-align: left;
+    }
+
+    .user-name {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .user-role {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .btn-logout {
+      padding: 8px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 20px;
+      color: var(--color-white);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-logout:hover {
+      background: rgba(255, 255, 255, 0.3);
+      color: var(--color-white);
+    }
+
+    /* Main Content */
+    .dashboard-content {
+      padding: 30px 0;
+    }
+
+    .welcome-card {
+      background: linear-gradient(135deg, rgba(227, 110, 106, 0.1), rgba(235, 150, 98, 0.1));
+      border: 2px solid var(--color-white);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .welcome-card h2 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .welcome-card p {
+      font-size: 16px;
+      color: #8b7355;
+    }
+
+    /* Games Section */
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .game-card {
+      background: var(--color-white);
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 8px 20px rgba(86, 40, 34, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+      height: 100%;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(86, 40, 34, 0.15);
+      border-color: var(--color-primary);
+    }
+
+    .game-icon {
+      font-size: 50px;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .game-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--color-text-main);
+    }
+
+    .game-description {
+      font-size: 14px;
+      color: #8b7355;
+      margin-bottom: 15px;
+    }
+
+    .game-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .badge-easy {
+      background: var(--color-yellow-light);
+      color: var(--color-text-main);
+      border: 1px solid var(--color-accent);
+    }
+
+    .badge-medium {
+      background: var(--color-orange-light);
+      color: var(--color-text-main);
+      border: 1px solid var(--color-secondary);
+    }
+
+    .game-footer {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(227, 110, 106, 0.15);
+    }
+
+    .btn-play {
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      color: var(--color-white);
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-play:hover {
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .user-info {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="dashboard-header">
+  <div class="container">
+    <div class="header-content">
+      <div class="brand-section">
+        <div class="logo-circle">
+          <img src="logo/شعار (1).png" alt="معمل سلمى" class="logo-img">
+        </div>
+        <div class="brand-text">
+          <h1>معمل سلمى التعليمي</h1>
+        </div>
+      </div>
+
+      <div class="user-section">
+        <div class="user-info">
+          <div class="user-name" id="userName">طالبة</div>
+          <div class="user-role">لوحة التحكم</div>
+        </div>
+        <a href="login.html" class="btn-logout" onclick="logout()">تسجيل الخروج</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="dashboard-content">
+  <div class="container">
+    <!-- Welcome Card -->
+    <div class="welcome-card">
+      <h2>🎯 مرحباً بك في مملكتك الرياضية!</h2>
+      <p>اختاري اللعبة المناسبة وابدئي رحلة البناء والتعلم</p>
+    </div>
+
+    <!-- Games Grid -->
+    <section>
+      <h3 class="section-title">
+        <span>🎮</span>
+        <span>الألعاب التفاعلية</span>
+      </h3>
+
+      <div class="row g-4">
+        <!-- Game 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="game-card" onclick="playGame('numbers')">
+            <span class="game-icon">🔢</span>
+            <h4 class="game-title">تعرّفي على الأرقام</h4>
+            <p class="game-description">تعلمي الأرقام من 0 إلى 100 بطريقة ممتعة</p>
+            <span class="game-badge badge-easy">سهل</span>
+            <div class="game-footer">
+              <button class="btn-play">ابدئي اللعب ←</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Game 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="game-card" onclick="playGame('place-value')">
+            <span class="game-icon">📊</span>
+            <h4 class="game-title">القيمة المنزلية</h4>
+            <p class="game-description">اكتشفي الآحاد والعشرات والمئات</p>
+            <span class="game-badge badge-medium">متوسط</span>
+            <div class="game-footer">
+              <button class="btn-play">ابدئي اللعب ←</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Game 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="game-card" onclick="playGame('operations')">
+            <span class="game-icon">➕➖</span>
+            <h4 class="game-title">الجمع والطرح</h4>
+            <p class="game-description">تدربي على العمليات الحسابية البسيطة</p>
+            <span class="game-badge badge-easy">سهل</span>
+            <div class="game-footer">
+              <button class="btn-play">ابدئي اللعب ←</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Game 4 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="game-card" onclick="playGame('clock')">
+            <span class="game-icon">⏰</span>
+            <h4 class="game-title">قراءة الساعة</h4>
+            <p class="game-description">تعلمي قراءة الوقت بطريقة مرحة</p>
+            <span class="game-badge badge-medium">متوسط</span>
+            <div class="game-footer">
+              <button class="btn-play">قريباً</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Game 5 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="game-card" onclick="playGame('comparison')">
+            <span class="game-icon">⚖️</span>
+            <h4 class="game-title">المقارنة بين الأعداد</h4>
+            <p class="game-description">أكبر من، أصغر من، يساوي</p>
+            <span class="game-badge badge-easy">سهل</span>
+            <div class="game-footer">
+              <button class="btn-play">ابدئي اللعب ←</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Game 6 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="game-card" onclick="playGame('counting')">
+            <span class="game-icon">🎈</span>
+            <h4 class="game-title">عدّي معي</h4>
+            <p class="game-description">احسبي الأشياء بطريقة ممتعة</p>
+            <span class="game-badge badge-easy">سهل</span>
+            <div class="game-footer">
+              <button class="btn-play">ابدئي اللعب ←</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script>
+  // التحقق من تسجيل الدخول
+  window.onload = function() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (!isLoggedIn) {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    // عرض اسم المستخدم
+    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    const userEmail = localStorage.getItem('userEmail');
+    
+    if (userData.firstName) {
+      document.getElementById('userName').textContent = userData.firstName + ' ' + userData.lastName;
+    } else if (userEmail) {
+      document.getElementById('userName').textContent = userEmail.split('@')[0];
+    }
+  };
+
+  function playGame(gameType) {
+    // حفظ نوع اللعبة
+    localStorage.setItem('currentGame', gameType);
+    // الانتقال لصفحة الألعاب
+    window.location.href = 'index.html#' + gameType;
+  }
+
+  function logout() {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userData');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userType');
+  }
+</script>
+
+</body>
+</html>
